@@ -1,30 +1,31 @@
-<!-- <ion-header>
-  <ion-toolbar class="negro">
-    <ion-title>RegistrAPP</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
-<img src="assets/images/login.jpg">
+<div>
+  <img src="assets/images/logoDuoc.png" class="logoLogin">
+  <img src="assets/images/login.jpg">
+</div>
 
 <ion-content class="ion-padding">
 
-  <ion-item class="ion-margin-top">
-    <ion-label position="floating">Cuenta</ion-label>
-    <ion-input [(ngModel)]="user"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-top">
-    <ion-label position="floating">Contraseña</ion-label>
-    <ion-input [(ngModel)]="pwd" type="password"></ion-input>
-  </ion-item>
+  <ion-row class="ion-justify-content-center">
+    <ion-item class="ion-margin-top">
+      <ion-label position="floating">Cuenta</ion-label>
+      <ion-input [(ngModel)]="user"></ion-input>
+    </ion-item>
+  </ion-row>
+  
+  <ion-row class="ion-justify-content-center">
+    <ion-item class="ion-margin-top">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="pwd" type="password"></ion-input>
+    </ion-item>
+  </ion-row>
 
   <ion-row class="ion-justify-content-center ion-margin-top">
-
     <ion-button (click)="ingresar()" class="amarillo buttonLogin" shape="round">
       <ion-icon name="log-in-outline" slot="start"></ion-icon>
       Ingresar
     </ion-button>
   </ion-row>
+  
   <ion-row class="ion-justify-content-center ion-margin-top">
     <ion-button (click)="cambiarPwd()" class="gris buttonLogin" shape="round">Reestablecer contraseña</ion-button>
   </ion-row>
