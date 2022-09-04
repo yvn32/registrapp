@@ -1,0 +1,20 @@
+.botonQR[shape=circle] {
+    --border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    color: black;
+    // font-family: 'Merriweather';
+}
+.imgQR {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    color: white;
+}
+.logoInicio {
+    width : 150px;
+    align-items: center;
+}

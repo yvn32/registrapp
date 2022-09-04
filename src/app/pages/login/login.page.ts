@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
 
   async cambiarPwd() {
     const cambioPwd = await this.alertController.create({
-      header: 'Reestablecer contraseña',
+      header: 'Restablecer contraseña',
       buttons: [
         {
           text: 'Cancelar',

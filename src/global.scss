@@ -47,10 +47,21 @@
     --background: #eeeeee;
     --color: #FFFFFF;    
 }
+.grisOscuro {
+    --background: #232323;
+    --color: #FFFFFF;    
+}
 .botonOutline {
     --color: #FFB800;
     --border-color: #FFB800;
 }
-
-
-
+.black{
+    --background: black;
+}
+.ion-back-button {
+    --border-color: white;
+}
+.registrapp {
+    font-family: 'Merriweather';
+    font-size: xx-large;
+}

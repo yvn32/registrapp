@@ -1,18 +1,40 @@
 <ion-header>
-  <ion-toolbar class="negro">
+  <ion-toolbar class="black">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ msje }} {{ user }}</ion-title>
+    <!-- <ion-title>{{ msje }} {{ user }}</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding negro">
+
   <ion-row class="ion-justify-content-center">
-    <ion-button class="amarillo">
-      <ion-icon name="qr-code-outline" slot="start"></ion-icon>
-      Escanear QR
+    <h1>{{ msje }} {{ user }}</h1>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-button class="amarillo botonQR" shape="circle">
+      <div>
+        <ion-row>
+          <img src="assets/images/qr.png" class="imgQR ion-justify-content-center">
+        </ion-row>
+        <ion-row>
+          <h5 class="ion-justify-content-center">Escanear QR</h5>
+        </ion-row>     
+      </div>
     </ion-button>
   </ion-row>
+  
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="black">
+    <div>
+      <ion-row class="ion-justify-content-center">
+        <img src="assets/images/logoDuoc.png" class="logoInicio">
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-footer>
 

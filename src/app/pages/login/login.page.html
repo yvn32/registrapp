@@ -1,19 +1,23 @@
-<div>
-  <img src="assets/images/logoDuoc.png" class="logoLogin">
-  <img src="assets/images/login.jpg">
-</div>
+<ion-content class="negro">
 
-<ion-content class="ion-padding">
+  <div>
+    <img src="assets/images/logoDuoc.png" class="logoLogin">
+    <img src="assets/images/login.jpg">
+  </div>
 
   <ion-row class="ion-justify-content-center">
-    <ion-item class="ion-margin-top">
+    <h1 class="registrapp">RegistrAPP</h1>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-item class="ion-margin-top grisOscuro">
       <ion-label position="floating">Cuenta</ion-label>
       <ion-input [(ngModel)]="user"></ion-input>
     </ion-item>
   </ion-row>
   
   <ion-row class="ion-justify-content-center">
-    <ion-item class="ion-margin-top">
+    <ion-item class="ion-margin-top grisOscuro">
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input [(ngModel)]="pwd" type="password"></ion-input>
     </ion-item>
@@ -27,7 +31,7 @@
   </ion-row>
   
   <ion-row class="ion-justify-content-center ion-margin-top">
-    <ion-button (click)="cambiarPwd()" class="gris buttonLogin" shape="round">Reestablecer contraseña</ion-button>
+    <ion-button (click)="cambiarPwd()" class="gris buttonLogin" shape="round">Restablecer contraseña</ion-button>
   </ion-row>
 
 </ion-content>

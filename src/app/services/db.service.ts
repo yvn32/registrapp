@@ -50,7 +50,7 @@ export class DbService {
           if(newPwd == repPwd){
             if(newPwd != curPwd) {
               this.passwordValida = newPwd;
-              msje = 'Su constraseña ha sido reestablecida, por favor inicie sesión';
+              msje = 'Su constraseña ha sido restablecida, por favor inicie sesión';
             } else {
               msje = 'La nueva contraseña no puede ser igual a la contraseña actual, por favor intente nuevamente';
             }
@@ -58,7 +58,7 @@ export class DbService {
             msje = 'La nueva contraseña y su repetición no coinciden, por favor intente nuevamente';
           }
         } else {
-          msje = 'Las credenciales ingresadas son inválidas, no es posible reestablecer la contraseña';
+          msje = 'Las credenciales ingresadas son inválidas, no es posible restablecer la contraseña';
         }
     }
     return msje;
