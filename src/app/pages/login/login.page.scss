@@ -10,3 +10,72 @@ ion-input {
     top: 5px;
     position:absolute;
 }
+.HeaderLogo{
+    background-image: url(../../../assets/images/fondo2-login.svg);
+    background-position:top;
+    background-size: cover;
+    height: 240px;
+    display: flex;
+}
+.Duoc{
+font-style: normal;
+font-weight: 900;
+font-size: 39.4667px;
+line-height: 48px;
+/* identical to box height */
+color: #FFFFFF;
+    span{
+        color: #FFB800;
+    }
+}
+.item-native::after{
+    --background:transparent;
+}
+
+ion-input {
+    input{
+        color: black;
+    }
+}
+
+.btn1-login{
+    background: #FFB800;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px 0px 0px 25px;
+    display: flex;
+    div{
+        font-style: normal;
+        font-weight: bolder;
+        font-size: 15.9712px;
+        line-height: 19px;
+        color: #001F68;
+    }
+
+}
+
+.btn2-login{
+    background: #307FE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 25px 25px 0px;
+    display: flex;
+    div{
+        font-style: normal;
+        font-weight: bolder;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: center;
+        color: #EEEEEE;
+    }
+
+}
+.p-login{
+    font-style: normal;
+font-weight: 400;
+font-size: 15.9712px;
+line-height: 19px;
+text-align: center;
+color: #EEEEEE;
+}
+.a-d-none{
+        text-decoration: none;
+    }

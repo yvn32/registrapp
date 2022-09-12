@@ -1,28 +1,58 @@
 <ion-content class="negro">
 
-  <div>
-    <img src="assets/images/logoDuoc.png" class="logoLogin">
-    <img src="assets/images/login.jpg">
+  <div class="HeaderLogo">
+    <ion-col class="Duoc ion-text-center ion-margin-top">
+      Duoc<span>Uc</span>
+    </ion-col>
   </div>
 
-  <ion-row class="ion-justify-content-center">
-    <h1 class="registrapp">RegistrAPP</h1>
-  </ion-row>
 
-  <ion-row class="ion-justify-content-center">
+  <!--<ion-row class="ion-justify-content-center ion-margin-top">
     <ion-item class="ion-margin-top grisOscuro">
       <ion-label position="floating">Cuenta</ion-label>
       <ion-input [(ngModel)]="user"></ion-input>
     </ion-item>
+  </ion-row>-->
+
+  <ion-row class="ion-justify-content-center ion-margin-top">
+    <ion-item class="ion-margin-top grisOscuro">
+      <ion-input placeholder="Cuenta" [(ngModel)]="user"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-top grisOscuro">
+      <ion-input placeholder="Contraseña" type="password" [(ngModel)]="pwd"></ion-input>
+    </ion-item>
+    <ion-item class="b ion-margin-top">
+      <ion-row class="ion-align-items-stretch .ion-align-items-stretch">
+        <ion-col class="btn1-login ion-align-items-center ion-justify-content-center">
+          <div (click)="ingresar()" >Ingresar</div>
+        </ion-col>
+        <ion-col class="btn2-login ion-align-items-center ion-justify-content-center">
+          <div (click)="cambiarPwd()"  >Reestablecer Contraseña</div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <a href="" class="a-d-none"><p class="p-login">¿No estás registrado?</p></a>
   </ion-row>
   
-  <ion-row class="ion-justify-content-center">
+  <!--<ion-row class="ion-justify-content-center">
     <ion-item class="ion-margin-top grisOscuro">
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input [(ngModel)]="pwd" type="password"></ion-input>
     </ion-item>
+  </ion-row>-->
+
+  <ion-row class="ion-justify-content-center">
+
   </ion-row>
 
+  <ion-row class="ion-justify-content-center btn-login">
+
+  </ion-row>
+
+
+
+  <!--
   <ion-row class="ion-justify-content-center ion-margin-top">
     <ion-button (click)="ingresar()" class="amarillo buttonLogin" shape="round">
       <ion-icon name="log-in-outline" slot="start"></ion-icon>
@@ -33,5 +63,5 @@
   <ion-row class="ion-justify-content-center ion-margin-top">
     <ion-button (click)="cambiarPwd()" class="gris buttonLogin" shape="round">Restablecer contraseña</ion-button>
   </ion-row>
-
+-->
 </ion-content>

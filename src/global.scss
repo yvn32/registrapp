@@ -32,8 +32,10 @@
     // Gris claro: #eeeeee - rgba(238, 238, 238, 1)
 
 .negro {
-    --background: #1A1A1A;
-    --color: #FFFFFF;
+    --background: none;
+    background-image: url(assets/images/fondo-login.svg);
+    background-size: cover;
+    background-position: center;
 }
 .amarillo {
     --background: #FFB800;
@@ -48,16 +50,27 @@
     --color: #FFFFFF;    
 }
 .grisOscuro {
-    --background: #232323;
-    --color: #FFFFFF;    
+    --background: #EEEEEE;
+    border-radius: 29px;   
+    font-style: normal;
+    font-size: 15.9712px;
+    line-height: 19px;
+    color: #012E75;
+}
+.b {
+    --background:tansparent;
+    border-radius: 29px;   
+    font-style: normal;
+    font-size: 15.9712px;
+    line-height: 19px;
+    color: #012E75;
+    padding: 0;
 }
 .botonOutline {
     --color: #FFB800;
     --border-color: #FFB800;
 }
-.black{
-    --background: black;
-}
+
 .ion-back-button {
     --border-color: white;
 }
