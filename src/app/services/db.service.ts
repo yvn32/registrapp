@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,35 @@ export class DbService {
   passwordValida: string = '1111';
   validador: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sqlite: SQLite) {
+    this.sqlite.create({
+      name: 'datos.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('CREATE TABLE IF NOT EXISTS PERSONA(CUENTA VARCHAR(50), CONTRASENA VARCHAR(30))', []).then(() => {
+        console.log('YVN: TABLA CREADA OK');
+      }).catch(error => {
+        console.log('YVN: TABLA NOK');
+      })
+    }).catch(error => {
+      console.log('YVN: BASE DE DATOS NOK');
+    })
+  }
+
+  registrarPersona(user, pwd) {
+    this.sqlite.create({
+      name: 'datos.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('INSERT INTO PERSONA VALUES(?, ?)', [user, pwd]).then(() => {
+        console.log('YVN: PERSONA ALMACENADA OK');
+      }).catch(error => {
+        console.log('YVN: PERSONA NO ALMACENADA');
+      })
+    }).catch(error => {
+      console.log('YVN: BASE DE DATOS NOK');
+    })
+  }
 
   canActivate() {
     if(this.validador) {

@@ -91,4 +91,38 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
+  async registroPersona() {
+    const registro = await this.alertController.create({
+      header: 'Registrarme',
+      inputs: [
+        {
+          placeholder: 'Cuenta',
+          name: 'user',
+        },
+        {
+          placeholder: 'Contraseña',
+          type: 'password',
+          name: 'pwd',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+        },
+        {
+          text: 'Registrar',
+          handler: (data) => {
+            // this.registrarPersona(data.user, data.pwd);
+            this.db.registrarPersona(data.user, data.pwd);
+          },
+        }
+      ],
+    });
+    await registro.present();
+  }
+
+  // registrarPersona(user, pwd) {
+  //   this.db.registrarPersona(user, pwd);
+  // }
+
 }

@@ -1,40 +1,40 @@
-<ion-header>
+<ion-header [hidden]="escaneando">
   <ion-toolbar class="black">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <!-- <ion-title>{{ msje }} {{ user }}</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding negro">
+<ion-content class="ion-padding" [fullscreen]="true" [style.--background]="escaneando?'#00000000':'#ffffff'">
 
-  <ion-row class="ion-justify-content-center">
+  <ion-row class="ion-justify-content-center" [hidden]="escaneando">
     <h1>{{ msje }} {{ user }}</h1>
   </ion-row>
 
   <ion-row class="ion-justify-content-center">
-    <ion-button class="amarillo botonQR" shape="circle">
+    <ion-button class="amarillo botonQR" shape="circle" (click)="iniciarScanner()" [hidden]="escaneando">
       <div>
         <ion-row>
           <img src="assets/images/qr.png" class="imgQR ion-justify-content-center">
         </ion-row>
         <ion-row>
-          <h5 class="ion-justify-content-center">Escanear QR</h5>
-        </ion-row>     
+          <h5 class="ion-justify-content-center">Escanear</h5>
+        </ion-row>
       </div>
     </ion-button>
   </ion-row>
   
+  <div class="scanner" [hidden]="!escaneando"></div>
+
+  <ion-row class="ion-justify-content-center ion-margin-top" [hidden]="!escaneando">
+    <ion-button (click)="detenerScanner()" class="amarillo detener" shape="round">Detener</ion-button>
+  </ion-row>
+
+  <div>
+    <ion-row class="ion-justify-content-center" [hidden]="escaneando">
+      <img src="assets/images/logoDuoc.png" class="logoInicio">
+    </ion-row>
+  </div>
+
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar class="black">
-    <div>
-      <ion-row class="ion-justify-content-center">
-        <img src="assets/images/logoDuoc.png" class="logoInicio">
-      </ion-row>
-    </div>
-  </ion-toolbar>
-</ion-footer>
-
