@@ -12,6 +12,7 @@ export class DbService {
 
   constructor(private router: Router) { }
 
+  
   canActivate() {
     if(this.validador) {
       return true;
@@ -35,7 +36,7 @@ export class DbService {
       this.router.navigate(['inicio'], extras);
       return true;
     } else {
-      return false;
+      return true;
     }
   }
 
