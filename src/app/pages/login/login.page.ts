@@ -23,15 +23,77 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  // F1 - REGISTRO DE NUEVA CUENTA
+  async registroCuenta() {
+    const registro = await this.alertController.create({
+      header: 'Registrarme',
+      inputs: [
+        {
+          placeholder: 'Cuenta',
+          name: 'user',
+        },
+        {
+          placeholder: 'Contraseña',
+          type: 'password',
+          name: 'pwd',
+        },
+        {
+          placeholder: 'Repetir contraseña',
+          type: 'password',
+          name: 'repPwd',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+        },
+        {
+          text: 'Registrar',
+          handler: (data) => {
+            this.registrarCuenta(data.user, data.pwd, data.repPwd);
+          },
+        }
+      ],
+    });
+    await registro.present();
+  }
+
+  registrarCuenta(user, pwd, repPwd) {
+    if(user == '' || pwd == '' || repPwd == '') {
+      this.mostrarMensaje('Por favor ingrese los datos solicitados');
+    } else {
+      this.db.cuentaNoExiste(user).then((datos) => {
+        if(datos) {
+          if(pwd == repPwd) {
+            this.db.registrarCuenta(user, pwd).then((datos) => {
+              if(datos){
+                this.mostrarMensaje('La cuenta ha sido creada');
+              } else {
+                this.mostrarMensaje('No ha sido posible crear la cuenta');
+              }
+            })
+          } else {
+            this.mostrarMensaje('La contraseña y su repetición no coinciden');
+          }
+        } else {
+          this.mostrarMensaje('La cuenta ya existe, por favor inicie sesión');
+        }
+      })
+    }
+  }
+
+  // F2 - INICIO DE SESIÓN
   ingresar() {
-    if (!this.db.autenticar(this.user, this.pwd)) {
-      this.mostrarMensaje();
-    };
+    this.db.autenticar(this.user, this.pwd).then((datos) => {
+      if(!datos){
+        this.msjeIngreso();
+      }
+    })
     this.user = '';
     this.pwd = '';
   }
 
-  async mostrarMensaje() {
+  async msjeIngreso() {
     const alert = await this.alertController.create({
       header: 'Credenciales inválidas',
       message: 'Por favor intente nuevamente o regístrese',
@@ -40,6 +102,7 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
+  // F3 - CAMBIO DE CONTRASEÑA
   async cambiarPwd() {
     const cambioPwd = await this.alertController.create({
       header: 'Restablecer contraseña',
@@ -49,7 +112,7 @@ export class LoginPage implements OnInit {
         },
         {
           text: 'Ok',
-          handler: datos => this.mostrarMsjeCambioPwd(this.db.validarCambio(datos.user, datos.curPwd, datos.newPwd, datos.repPwd)),
+          handler: datos => this.validarCambioPwd(datos.user, datos.curPwd, datos.newPwd, datos.repPwd),
         }
       ],
       inputs: [
@@ -77,9 +140,44 @@ export class LoginPage implements OnInit {
     await cambioPwd.present();
   }
 
-  async mostrarMsjeCambioPwd(resultado) {
+  validarCambioPwd(user, curPwd, newPwd, repPwd) {
+    if(user == '' || curPwd == '' || newPwd == '' || repPwd == '') {
+      this.mostrarMensaje('Por favor ingrese los datos solicitados');
+    } else {
+      this.db.cuentaExiste(user).then((datos) => {
+        if(datos) {
+          this.db.validarPwdRegistrada(user, curPwd).then((datos) => {
+            if(datos) {
+              if(newPwd == repPwd) {
+                if(newPwd != curPwd) {
+                  this.db.actualizarPwd(user, newPwd).then((datos) => {
+                    if(datos) {
+                      this.mostrarMensaje('La constraseña ha sido restablecida, por favor inicie sesión');  
+                    } else {
+                      this.mostrarMensaje('No ha sido posible actualizar la contraseña');  
+                    }
+                  })
+                } else {
+                  this.mostrarMensaje('La nueva contraseña no puede ser igual a la contraseña actual');
+                }
+              } else {
+                this.mostrarMensaje('La nueva contraseña y su repetición no coinciden');
+              }
+            } else {
+              this.mostrarMensaje('Credenciales inválidas');
+            }
+          })
+        } else {
+          this.mostrarMensaje('Credenciales inválidas');
+        }
+      })
+    }
+  }
+
+  // § - MÉTODOS COMPARTIDOS
+  async mostrarMensaje(msje) {
     const toast = await this.toastController.create({
-      message: resultado,
+      message: msje,
       duration: 4000,
       color: "dark",
       position: 'middle',
@@ -90,39 +188,5 @@ export class LoginPage implements OnInit {
     });
     toast.present();
   }
-
-  async registroPersona() {
-    const registro = await this.alertController.create({
-      header: 'Registrarme',
-      inputs: [
-        {
-          placeholder: 'Cuenta',
-          name: 'user',
-        },
-        {
-          placeholder: 'Contraseña',
-          type: 'password',
-          name: 'pwd',
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-        },
-        {
-          text: 'Registrar',
-          handler: (data) => {
-            // this.registrarPersona(data.user, data.pwd);
-            this.db.registrarPersona(data.user, data.pwd);
-          },
-        }
-      ],
-    });
-    await registro.present();
-  }
-
-  // registrarPersona(user, pwd) {
-  //   this.db.registrarPersona(user, pwd);
-  // }
 
 }
